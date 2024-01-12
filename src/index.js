@@ -6,8 +6,11 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import './index.css';
 import { App } from './App';
+import { DrawerProvider } from './context/DrawerContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-	<App />
+	<DrawerProvider>
+		<App />
+	</DrawerProvider>
 );

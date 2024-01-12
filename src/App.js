@@ -5,6 +5,7 @@ import { SignIn } from './features/sign-in/SignIn';
 import { SignUp } from './features/sign-up/SignUp';
 import { Dashboard } from './features/dashboard/Dashboard';
 
+import { MiniDrawer } from './components/drawers/MiniDrawer';
 import { TopNavBar } from './components/navbars/topNav/TopNavBar';
 import { BottomNavBar } from './components/navbars/bottomNav/BottomNavbar';
 
@@ -25,24 +26,31 @@ export const App = () => {
 		<Box>
 			<CssBaseline />
 			<TopNavBar/>
-			<List 
+			
+			<Box 
 				sx={{
+					display: 'flex',
 					pb:7, 
 					pt:'117px',
 					[theme.breakpoints.up('sm')]: {
 						pt: '125px', // Height for screens defined in the 'sm' breakpoint and up (desktop)
-					  }
+					}
 				}}
 			>
-				{ messages.map( ( { primary, secondary, person }, index) => (
-					<ListItem button key={index + person}>
-						<ListItemAvatar>
-							<Avatar alt="Profile Picture" src={person} />
-						</ListItemAvatar>
-						<ListItemText primary={primary} secondary={secondary} />
-					</ListItem>
-				) ) }
-			</List>
+				<MiniDrawer/>
+				
+				<List>
+					{ messages.map( ( { primary, secondary, person }, index) => (
+						<ListItem button key={index + person}>
+							<ListItemAvatar>
+								<Avatar alt="Profile Picture" src={person} />
+							</ListItemAvatar>
+							<ListItemText primary={primary} secondary={secondary} />
+						</ListItem>
+					) ) }
+				</List>
+		\
+			</Box>
 			<BottomNavBar className='footerNav' bottom={bottom} setBottom={setBottom}/>
 		</Box>
 	);

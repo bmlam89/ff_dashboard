@@ -7,6 +7,8 @@ import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 
+import { useDrawer } from '../../../context/DrawerContext';
+
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -50,6 +52,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export const SearchBar = () => {
+
+  const { toggleDrawer } = useDrawer();
 	return (
 		<Toolbar>
 			<IconButton
@@ -58,6 +62,7 @@ export const SearchBar = () => {
 				color="inherit"
 				aria-label="open drawer"
 				sx={{ mr: 2 }}
+        onClick={ toggleDrawer }
 			>
 				<MenuIcon />
 			</IconButton>
