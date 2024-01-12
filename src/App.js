@@ -1,27 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
-import Box from '@mui/material/Box';
-import CssBaseline from '@mui/material/CssBaseline';
-import BottomNavigation from '@mui/material/BottomNavigation';
-import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ArchiveIcon from '@mui/icons-material/Archive';
-import Paper from '@mui/material/Paper';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemText from '@mui/material/ListItemText';
-import Avatar from '@mui/material/Avatar';
+import React, { useState } from 'react';
+import { Box, CssBaseline, List, ListItem, ListItemAvatar, ListItemText, Avatar, useTheme } from '@mui/material';
 
 import { SignIn } from './features/sign-in/SignIn';
 import { SignUp } from './features/sign-up/SignUp';
 import { Dashboard } from './features/dashboard/Dashboard';
-import { FixedPositionWrapper } from './components/wrappers/FixedPositionWrapper';
 
+import { TopNavBar } from './components/navbars/topNav/TopNavBar';
+import { BottomNavBar } from './components/navbars/bottomNav/BottomNavbar';
 
-import { FixedPositionNavBar } from './features/fixed-position-navbar/FixedPositionNavBar';
-import { AnimatedTopNavBar } from './features/animated-top-navbar/AnimatedTopNavBar';
-import { ScrollDrawer } from './features/scroll-drawer/ScrollDrawer';
 const refreshMessages = () => {
 	const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
 
@@ -29,48 +15,25 @@ const refreshMessages = () => {
 		() => messageExamples[getRandomInt(messageExamples.length)],
 	);
 };
-function App() {
-	const [top, setTop] = useState(0);
-	const [top2, setTop2] = useState(0);
-	const [value, setValue] = useState(0);
-	const ref = useRef( null );
-	const [ open, setOpen ] = useState( true );
-	const [messages, setMessages] = useState(() => refreshMessages());
-	const [isMobile, setIsMobile] = useState( window.innerWidth <= 768);
-	useEffect(() => {
-		setMessages(refreshMessages());
-	}, [value]);
-   
 
-	let lastScrollY = window.scrollY;
-	useEffect(() => {
-		const checkIfMobile = () => window.innerWidth <= 768; // Example breakpoint for mobile
-		
-		const handleScroll = () => {
-			
-			if (window.scrollY > lastScrollY) {
-				setOpen(false); // Hide on scroll down
-			} else {
-				setOpen(true); // Show on scroll up
-			}
-			
-			lastScrollY = window.scrollY;
-		};
-
-		window.addEventListener('scroll', handleScroll);
-		return () => window.removeEventListener('scroll', handleScroll);
-		
-	  }, []);
+export const App = () => {
+	const theme = useTheme();
+	const [bottom, setBottom] = useState(0);
+	const [messages, setMessages] = useState(refreshMessages())
 	
 	return (
-		<Box ref={ref} sx={{ position: 'relative' }}>
+		<Box>
 			<CssBaseline />
-		
-			{/* <ScrollDrawer isMobile={isMobile} open={ open }>
-				<AnimatedTopNavBar top={top} top2={top2} setTop={setTop} setTop2={setTop2}/>
-			</ScrollDrawer> */}
-
-			<List>
+			<TopNavBar/>
+			<List 
+				sx={{
+					pb:7, 
+					pt:'117px',
+					[theme.breakpoints.up('sm')]: {
+						pt: '125px', // Height for screens defined in the 'sm' breakpoint and up (desktop)
+					  }
+				}}
+			>
 				{ messages.map( ( { primary, secondary, person }, index) => (
 					<ListItem button key={index + person}>
 						<ListItemAvatar>
@@ -80,7 +43,7 @@ function App() {
 					</ListItem>
 				) ) }
 			</List>
-			<FixedPositionNavBar position={"bottom"} value={value} setValue={setValue} />
+			<BottomNavBar className='footerNav' bottom={bottom} setBottom={setBottom}/>
 		</Box>
 	);
 };
@@ -126,6 +89,3 @@ const messageExamples = [
 	  person: '/static/images/avatar/1.jpg',
 	},
 ];
-
-export default App;
-
