@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ArchiveIcon from '@mui/icons-material/Archive';
 
 import { FixedPositionWrapper } from '../../wrappers/FixedPositionWrapper';
 
-export const BottomNavBar = ({bottom, setBottom}) => {
+export const BottomNavBar = ( { labels } ) => {
 	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-
+	const [ active, setActive ] = useState(0)
 	useEffect(() => {
 		const handleResize = () => {
 			setIsMobile(window.innerWidth < 768);
@@ -25,16 +23,20 @@ export const BottomNavBar = ({bottom, setBottom}) => {
 		<>
 			<FixedPositionWrapper position="bottom" className='bottomNav'>
 				<BottomNavigation 
-					
 					showLabels
-					value={bottom}
-					onChange={(event, newValue) => {
-						setBottom(newValue);
-					} }
+					value={active}
+					onChange={(event, newValue) => setActive(newValue) }
 				>
-					<BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-					<BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-					<BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
+					{
+						labels.map( label => (
+							<BottomNavigationAction 
+								label={ label.name}
+								icon={label.icon}
+								component={NavLink}
+								to={label.path}
+							/>
+						) )
+					}
 				</BottomNavigation>
 			</FixedPositionWrapper>
 		</>

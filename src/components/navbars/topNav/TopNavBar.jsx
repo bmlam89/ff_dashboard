@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AppBar, Box, Divider, useTheme } from '@mui/material';
 
 import { SearchBar } from './SearchBar';
-
+import { HorizontalButtonGroup } from './HorizontalButtonGroup';
 export const TopNavBar = () => {
 	const theme = useTheme();
 	const [hideAppBar, setHideAppBar] = useState(false);
@@ -28,15 +28,17 @@ export const TopNavBar = () => {
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="fixed" sx={ {
 					transition: 'height 0.3s linear',
-					height: hideAppBar ? 0 : 56, // Adjust '64px' to your AppBar's height
+					height: hideAppBar ? 0 : '117px', // Adjust '64px' to your AppBar's height
 					[theme.breakpoints.up('sm')]: {
-						height: hideAppBar ? 0 : 64, // Height for screens defined in the 'sm' breakpoint and up (desktop)
+						height: hideAppBar ? 0 : '125px', // Height for screens defined in the 'sm' breakpoint and up (desktop)
 					},
 					overflow: 'hidden',
 				} }
 			>
 				<SearchBar/>
 				<Divider/>
+				<HorizontalButtonGroup labels={ ["Projections", "Player Research", "Trade Analyzer", "Sleepers"] }/>
+
 			</AppBar>
 		</Box>
 	);

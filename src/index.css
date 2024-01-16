@@ -17,3 +17,6 @@ code {
     display: flex; /* Show on mobile screens */
   }
 }
+.table-container {
+  overflow-x: auto;
+};
