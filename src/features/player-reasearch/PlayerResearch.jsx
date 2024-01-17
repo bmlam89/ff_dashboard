@@ -19,8 +19,9 @@ export const PlayerResearch = () => {
 				}
 			} }
 		>
+			
 			<Input />
 			<Rankings />
 		</Box>
-	)
+	);
 };

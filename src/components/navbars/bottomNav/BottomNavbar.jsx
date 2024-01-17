@@ -30,6 +30,7 @@ export const BottomNavBar = ( { labels } ) => {
 					{
 						labels.map( label => (
 							<BottomNavigationAction 
+								key={ label.name }
 								label={ label.name}
 								icon={label.icon}
 								component={NavLink}

@@ -20,3 +20,13 @@ code {
 .table-container {
   overflow-x: auto;
 };
+
+.scrollable-content {
+  overflow-x: auto;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+.scrollable-content::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}

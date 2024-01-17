@@ -32,6 +32,7 @@ const Button = ( { label } ) => {
 export const HorizontalButtonGroup = ( { labels } ) => {
 	return (
 		<Box
+			className='scrollable-content'
 			sx={{
 				display: 'flex',
 				gap: '10px',
