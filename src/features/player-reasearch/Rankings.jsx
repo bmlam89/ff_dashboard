@@ -56,7 +56,7 @@ export const Rankings = () => {
 							ref={el => headerRefs.current[idx] = el}
 							sx={ {
 								display: 'flex',
-								paddingX: '20px',
+								paddingX: '10px',
 								paddingY: '6px',
 								alignItems: 'center',
 								justifyContent: 'center',
@@ -85,7 +85,7 @@ export const Rankings = () => {
 										width: '50px',
 										height:'50px',
 										position: 'sticky',
-										left: `${ headerWidths[ 0 ] - 40 }px`
+										left: `${ headerWidths[ 0 ] - 50 }px`
 									} }
 								/>
 								<Box
@@ -93,7 +93,7 @@ export const Rankings = () => {
 										display: 'flex',
 										flexDirection: 'column',
 										position: 'sticky',
-										left: `${ headerWidths[ 0 ] - 40 + 50 }px`
+										left: `${ headerWidths[ 0 ] }px`
 									} }
 								>	
 									<Box sx={ { 
