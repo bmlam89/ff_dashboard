@@ -26,6 +26,7 @@ export const App = () => {
 				<Box 
 					sx={{
 						display: 'flex',
+						backgroundColor: 'white',
 						pb:7, 
 						pt:'117px',
 						[theme.breakpoints.up('sm')]: {

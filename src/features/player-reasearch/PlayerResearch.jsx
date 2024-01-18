@@ -3,7 +3,6 @@ import { Box, useTheme } from '@mui/material';
 import { Input } from '../../components/input/Input';
 import { Filters } from './Filters';
 import { Rankings } from './Rankings';
-
 export const PlayerResearch = () => {
 	const theme = useTheme();
 	return (
@@ -14,6 +13,8 @@ export const PlayerResearch = () => {
 				width:'auto',
 				gap:'12px',
 				marginTop:'15px',
+				backgroundColor: 'white',
+				zIndex: 1000,
 				[theme.breakpoints.up('sm')]: {
 					marginTop: '12px', // Height for screens defined in the 'sm' breakpoint and up (desktop)
 				}

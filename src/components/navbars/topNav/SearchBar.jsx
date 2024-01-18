@@ -79,6 +79,7 @@ export const SearchBar = () => {
 					<SearchIcon />
 				</SearchIconWrapper>
 				<StyledInputBase
+          id="search"
 					placeholder="Search…"
 					inputProps={{ 'aria-label': 'search' }}
 				/>
