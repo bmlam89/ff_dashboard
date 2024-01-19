@@ -17,9 +17,7 @@ code {
     display: flex; /* Show on mobile screens */
   }
 }
-.table-container {
-  overflow-x: auto;
-};
+
 
 .scrollable-content {
   overflow-x: auto;

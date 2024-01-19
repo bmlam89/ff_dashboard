@@ -35,7 +35,7 @@ export const App = () => {
 					}}
 				>
 					<Routes>
-						<Route path="/" element={ <PlayerResearch /> } />
+						<Route path="/" element={ <PlayerResearch/> } />
 					</Routes>
 			
 				</Box>

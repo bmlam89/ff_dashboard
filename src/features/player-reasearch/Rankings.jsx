@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Box } from '@mui/material';
+import { Box, useTheme } from '@mui/material';
 
 
 const columns = [
@@ -7,18 +7,18 @@ const columns = [
 ]
 
 export const Rankings = () => {
-
+	const theme = useTheme();
 	const headers = ['Proj Wk Rank', 'GP', 'Avg Proj', 'Ppg', 'Beat', 'Performance', 
 		'Pass Yds', 'Pass TD', 'Int', 'Sack', 
 		'Rush Att', 'Rush Yds', 'Rush TD', 'YPC', 'RuYpg', 'TotYpg',
-		'Tgts', 'Tgt/Gm', 'Rec', 'Rec/Gm', 'Rec Yds', 'Rec TD', 'Catch Rate' 
+		'Tgts', 'Tgt/Gm', 'Rec', 'Rec/Gm', 'Rec Yds', 'Rec TD', 'Catch Rate'
 	]
 	const values = headers.map( ( _, idx ) => idx );
 
 	const [headerWidths, setHeaderWidths] = useState([]);
   	const headerRefs = useRef([]);
 
-	const arr = [ 1,2,3]
+	const arr = [ 1,2,3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4]
 
 	useEffect(() => {
 		const measuredWidths = headerRefs.current.map(ref => ref.offsetWidth);
@@ -26,6 +26,7 @@ export const Rankings = () => {
 	}, []);
 
 	return (
+
 		<Box
 			className="scrollable-content"
 
@@ -33,21 +34,25 @@ export const Rankings = () => {
 				display: 'flex',
 				justifyContent: 'space-between',
 				maxWidth: '100vw',
-				overflowX: 'auto'
+				overflowX: 'auto',
+				maxHeight: 'calc(100vh - 260px)',
+
 			} }
 		>
 			<Box sx={ {
 					display: 'flex',
 					flexDirection: 'column',
-				
+					
 				} }
 			>
-
 			
 				<Box
 					sx={ {
 						display:'flex',
+						justifyContent: 'space-between',
 						whiteSpace: 'nowrap',
+						backgroundColor: 'white',
+						
 					} }
 				>
 					{ headers.map ( ( header, idx ) => 
@@ -111,7 +116,6 @@ export const Rankings = () => {
 								sx={ {
 									display:'flex',
 									justifyContent: 'space-between',
-									width: 'full'
 								} }
 							>
 								{ values.map ( ( val, idx ) => 
@@ -138,6 +142,6 @@ export const Rankings = () => {
 				</Box>
 			</Box>
 		</Box>
-		
+	
 	   );
 };

@@ -8,24 +8,24 @@ export const TopNavBar = () => {
 	const [hideAppBar, setHideAppBar] = useState(false);
 	let lastScrollY = window.scrollY;
 
-	useEffect(() => {
-		const handleScroll = () => {
-			if (window.scrollY > lastScrollY) {
-				// Scrolling down
-				setHideAppBar(true);
-			} else {
-				// Scrolling up
-				setHideAppBar(false);
-			}
-			lastScrollY = window.scrollY;
-		};
+	// useEffect(() => {
+	// 	const handleScroll = () => {
+	// 		if (window.scrollY > lastScrollY) {
+	// 			// Scrolling down
+	// 			setHideAppBar(true);
+	// 		} else {
+	// 			// Scrolling up
+	// 			setHideAppBar(false);
+	// 		}
+	// 		lastScrollY = window.scrollY;
+	// 	};
 
-		window.addEventListener('scroll', handleScroll);
-		return () => window.removeEventListener('scroll', handleScroll);
-	}, []);
+	// 	window.addEventListener('scroll', handleScroll);
+	// 	return () => window.removeEventListener('scroll', handleScroll);
+	// }, []);
 
 	return (
-		<Box sx={{ flexGrow: 1 }}>
+		<Box sx={{ flexGrow: 1, zIndex: 5 }}>
 			<AppBar position="fixed" sx={ {
 					transition: 'height 0.3s linear',
 					height: hideAppBar ? 0 : '117px', // Adjust '64px' to your AppBar's height

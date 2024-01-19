@@ -10,17 +10,14 @@ export const PlayerResearch = () => {
 			sx={ {
 				display:'flex',
 				flexDirection:'column',
-				width:'auto',
 				gap:'12px',
 				marginTop:'15px',
 				backgroundColor: 'white',
-				zIndex: 1000,
 				[theme.breakpoints.up('sm')]: {
 					marginTop: '12px', // Height for screens defined in the 'sm' breakpoint and up (desktop)
 				}
 			} }
 		>
-			
 			<Input />
 			<Rankings />
 		</Box>

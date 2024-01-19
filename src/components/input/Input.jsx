@@ -7,7 +7,7 @@ export const Input = () => {
 
 	return (
 
-		<Box sx={ { display: 'flex', flexWrap: 'wrap', backgroundColor: 'white' } }>
+		<Box sx={ { backgroundColor: 'white' } }>
 			<FormControl sx={{ m: 1 }}>
 				<InputLabel htmlFor="outlined-adornment-amount">Player Name</InputLabel>
 				<OutlinedInput
